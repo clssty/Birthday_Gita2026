@@ -282,14 +282,6 @@
 </head>
 <body>
 
-<!-- ═══════════ YOUTUBE BACKGROUND MUSIC ═══════════ -->
-<!-- "At My Worst" by Pink Sweat$ -->
-<iframe id="yt-player"
-  src="https://www.youtube.com/embed/pKRkMoqp2yE?autoplay=1&loop=1&playlist=pKRkMoqp2yE&controls=0&mute=0&enablejsapi=1"
-  allow="autoplay; encrypted-media"
-  allowfullscreen>
-</iframe>
-
 <!-- floating music toggle -->
 <button id="music-btn" title="Toggle music" onclick="toggleMusic()">🎵</button>
 
@@ -479,5 +471,34 @@ for (let i = 0; i < 18; i++) {
   document.getElementById('page1').appendChild(s);
 }
 </script>
+<audio id="bg-music" loop>
+  <source src="assets/audio/at-my-worst.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const audio = document.getElementById("bg-music");
+
+  // volume biar tidak terlalu keras
+  audio.volume = 0.3;
+
+  // jalan saat user pertama kali klik
+  document.addEventListener("click", () => {
+    audio.play();
+  }, { once: true });
+</script>
+
+<button onclick="toggleMusic()">🎵</button>
+
+<script>
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+</script>
+
+
 </body>
 </html>
