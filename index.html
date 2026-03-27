@@ -478,13 +478,23 @@ for (let i = 0; i < 18; i++) {
 <script>
   const audio = document.getElementById("bg-music");
 
-  // volume biar tidak terlalu keras
+  // volume biar halus
   audio.volume = 0.3;
 
-  // jalan saat user pertama kali klik
+  // autoplay setelah klik pertama
   document.addEventListener("click", () => {
     audio.play();
   }, { once: true });
+
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+      document.getElementById("music-btn").classList.remove("paused");
+    } else {
+      audio.pause();
+      document.getElementById("music-btn").classList.add("paused");
+    }
+  }
 </script>
 
 <button onclick="toggleMusic()">🎵</button>
